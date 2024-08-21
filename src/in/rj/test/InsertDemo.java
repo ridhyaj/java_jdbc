@@ -12,8 +12,13 @@ public class InsertDemo {
 //        Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con= DriverManager.getConnection(url,username,password);
         PreparedStatement ps=con.prepareStatement(query);
-        ps.setString(1001,"John doe");
-        ResultSet rs=ps.executeQuery();
+        ps.setInt(1,10001);
+        ps.setString(2,"John Doe");
+        ps.setInt(3,2);
+        int rowsAffected=ps.executeUpdate();
+        if(rowsAffected>0){
+            System.out.println("Success");
+        }
 
         ps.close();
         con.close();
